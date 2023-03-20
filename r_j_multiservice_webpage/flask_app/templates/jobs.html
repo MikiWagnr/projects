@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>jobs</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbarcontents">
+            <img class="logo" src="static/images/rubenslogo.png" alt="rubens logo r&j Multijobs">
+            <a href="/">Home</a>
+            |
+            <a href="/gallery">Gallery</a>
+            |
+            <a href="/contact">Contact Us</a>
+            |
+            <a href="/feedback">Feedback</a>
+            |
+            <a href="/faq">FAQ</a>
+            |
+            <a href="/sign_in">Sign In</a>
+            |
+            <a href="/register">Register</a>
+            |
+            <a href="/logout">logout</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="maincontent">
+            <h1>services</h1>
+            <form action='/job/new' method='post'>
+                <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                <div>
+                    <label for='home_type'>Type of home:</label>
+                    <select name="home_type">
+                        <option value="none selected">Please Choose...</option>
+                        <option>Private home</option>
+                        <option>Residential apartment</option>
+                        <option>Condominium</option>
+                        <option>co-op apartment</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="exampleInputPassword1">How many rooms need job?</label>
+                    <input type="number" id="rooms" name="rooms" min="0" value="0">
+                </div>
+                <div>
+                    <label for='jobs'>What kind of service(s) are you looking for?</label>
+                    <input type="checkbox" name="job" id="job" value="1">
+                    <label for="job">Painting</label>
+                    <input type="checkbox" name="job" id="job" value="3">
+                    <label for="job">Deep cleaning</label>
+                    <input type="checkbox" name="job" id="job" value="2">
+                    <label for="job">Cosmetic work</label>
+                </div>
+                <div class="mb-3">
+                    <label for='comments'>Comment (optional):</label>
+                    <textarea name="comments" cols="20" rows="3"></textarea>
+                </div>
+                <input type='submit' value='submit'>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
