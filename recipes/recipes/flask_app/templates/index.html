@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="static/style.css">
+    <title>login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Register</h1>
+                {% with messages = get_flashed_messages() %}    
+                {% if messages %}                        
+                    {% for message in messages %}     
+                        <p>{{message}}</p>          
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+                <form action="/register" method="POST">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="first name" name="first_name"> 
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="last name" name="last_name"> 
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" placeholder="email" name="email"> 
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="pwtoggle">
+                        <input type="password" class="form-control pw" placeholder="Password" name="password" id="password1">
+                        <i class="bi bi-eye-slash" id="togglePassword1" onclick="togglePassword('#password1', 1)"></i>
+                    </div>
+                </div>
+                <label for="password">Password</label>
+                <div class="pwtoggle">
+                    <input type="password" class="form-control pw" placeholder="Password" name="confirm-password" id="password2">
+                    <i class="bi bi-eye-slash" id="togglePassword2" onclick="togglePassword('#password2', 2)"></i>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col">
+                <h1>Login</h1>
+                {% with messages = get_flashed_messages() %}    
+                {% if messages %}                        
+                    {% for message in messages %}     
+                        <p>{{message}}</p>          
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+                <form action="/login" method="post">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" placeholder="email" name="email"> 
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="pwtoggle">
+                        <input type="password" class="form-control pw" placeholder="Password" name="password" id="password3">
+                        <i class="bi bi-eye-slash" id="togglePassword3" onclick="togglePassword('#password3', 3)"></i>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function togglePassword(element,val){
+            const password = document.querySelector(element);
+                // Toggle the type attribute using
+                // getAttribure() method
+                const type = password
+                    .getAttribute('type') === 'password' ?
+                    'text' : 'password';
+                password.setAttribute('type', type);
+                console.log(document.querySelector(element))
+                document.querySelector('#togglePassword-'+ val).classList.toggle('bi-eye-slash')
+                document.querySelector('#togglePassword-'+ val).classList.toggle('bi-eye')
+                // Toggle the eye and bi-eye icon
+        }
+    </script>
+</body>
+</html>
